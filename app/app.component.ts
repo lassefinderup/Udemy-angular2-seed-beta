@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {CoursesComponent} from './courses.component';
 import {AuthorsComponent} from './authors.component';
 
@@ -33,6 +33,7 @@ export class AppComponent {
     title = "changes in DOM is reflected in Component" 
     isActive = true;
     isFavorite = false;
+    @Input() isFavorite = false;
 
     onFavoriteClick(){
         console.log("glyphicon star value: " + this.isFavorite);

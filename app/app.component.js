@@ -29,6 +29,7 @@ System.register(['angular2/core', './courses.component', './authors.component'],
                     this.title = "changes in DOM is reflected in Component";
                     this.isActive = true;
                     this.isFavorite = false;
+                    this.isFavorite = false;
                 }
                 AppComponent.prototype.onFavoriteClick = function () {
                     console.log("glyphicon star value: " + this.isFavorite);
@@ -43,6 +44,10 @@ System.register(['angular2/core', './courses.component', './authors.component'],
                 AppComponent.prototype.onDivClick = function ($event) {
                     console.log("event also handled by div!");
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], AppComponent.prototype, "isFavorite", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
