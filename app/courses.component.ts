@@ -16,15 +16,15 @@ import {CourseService} from './course.service'
                 {{ course }}
             </li>
         </ul>
-        `
+        `,
+    providers: [CourseService]
 })
 export class CoursesComponent {
     //decorator = attribute
     title = "Her e r titlen!";
     courses;
 
-    // constructor(courseService: CourseService){
-
-    // }
-
+    constructor(courseService: CourseService){
+        this.courses = courseService.getCourses();
+    }
 }
