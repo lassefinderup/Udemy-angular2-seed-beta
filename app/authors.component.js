@@ -21,6 +21,7 @@ System.register(['angular2/core', './author.service'], function(exports_1, conte
                 author_service_1 = author_service_1_1;
             }],
         execute: function() {
+            // interpolation = {{ x }} in html tags
             AuthorsComponent = (function () {
                 function AuthorsComponent(authorService) {
                     //decorator = attribute

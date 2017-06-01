@@ -1,6 +1,8 @@
 import {Component} from 'angular2/core'
 import {AuthorService} from './author.service'
 
+// interpolation = {{ x }} in html tags
+
 @Component({
     selector: 'authors',
     template: `
