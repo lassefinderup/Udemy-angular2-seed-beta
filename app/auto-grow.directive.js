@@ -24,7 +24,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.renderer = renderer;
                 }
                 AutoGrowDirective.prototype.onFocus = function () {
-                    this.renderer.setElementStyle(this.el.nativeElement, 'width', '200');
+                    this.renderer.setElementStyle(this.el.nativeElement, 'width', '300');
                 };
                 AutoGrowDirective.prototype.onBlur = function () {
                     this.renderer.setElementStyle(this.el.nativeElement, 'width', '60');

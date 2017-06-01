@@ -26,11 +26,27 @@ System.register(['angular2/core', './courses.component', './authors.component'],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.title = "changes in DOM is reflected in Component";
+                    this.isActive = true;
+                    this.isFavorite = false;
                 }
+                AppComponent.prototype.onFavoriteClick = function () {
+                    console.log("glyphicon star value: " + this.isFavorite);
+                    this.isFavorite = !this.isFavorite;
+                };
+                AppComponent.prototype.onClick = function ($event) {
+                    console.log("clicked!!!", $event);
+                    this.isActive = false;
+                    // can stop even propagartion, e.g. even will not be passed to div
+                    //$event.stopPropagation();
+                };
+                AppComponent.prototype.onDivClick = function ($event) {
+                    console.log("event also handled by div!");
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Hejsa Angular</h1>\n        <courses></courses>\n        <authors></authors>",
+                        template: "\n        <h1>Lasse's Typescript Angular2 sandbox project</h1>\n        <courses></courses>\n        <authors></authors>\n        <button class=\"btn btn-primary\" [class.active]=\"isActive\">button class binding test (if isActive is true, button will be active)</button>\n        <button class=\"btn btn-primary\" [style.backgroundColor]=\"isActive ? 'blue' : 'black'\">button style binding blue for active, black for not</button>\n        <div (click)=\"onDivClick()\">\n            <button (click)=\"onClick($event)\">button event firing (sets isActive to true)</button>\n        </div>\n        <input type=\"text\" [value]=\"title\" (input)=\"title = $event.target.value\" />\n        <input type=\"button\" (click)=\"title = ''\" value=\"Clear - component to the dom (comp property changes, dom changes)\" />\n        Preview: {{ title }}\n        \n        <div>\n        <i class=\"glyphicon\"\n        [ngClass]=\"isFavorite ? 'glyphicon-star' : 'glyphicon-star-empty'\"            \n        (click)=\"onFavoriteClick()\"></i>\n        </div>\n        ",
                         directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent]
                     }), 
                     __metadata('design:paramtypes', [])
