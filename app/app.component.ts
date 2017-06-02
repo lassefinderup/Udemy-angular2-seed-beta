@@ -1,6 +1,7 @@
 import {Component, Input} from 'angular2/core';
 import {CoursesComponent} from './courses.component';
 import {AuthorsComponent} from './authors.component';
+import {FavoriteComponent} from './favorite.component';
 
 @Component({
     selector: 'my-app',
@@ -17,13 +18,9 @@ import {AuthorsComponent} from './authors.component';
         <input type="button" (click)="title = ''" value="Clear - component to the dom (comp property changes, dom changes)" />
         Preview: {{ title }}
         
-        <div>
-        <i class="glyphicon"
-        [ngClass]="isFavorite ? 'glyphicon-star' : 'glyphicon-star-empty'"            
-        (click)="onFavoriteClick()"></i>
-        </div>
+        <favorite [isFavorite]="post.isFavorite"></favorite>
         `,
-    directives: [CoursesComponent, AuthorsComponent]
+    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent]
 })
 
 //note: use property and event binding
@@ -32,12 +29,10 @@ import {AuthorsComponent} from './authors.component';
 export class AppComponent {
     title = "changes in DOM is reflected in Component" 
     isActive = true;
-    isFavorite = false;
-    @Input() isFavorite = false;
 
-    onFavoriteClick(){
-        console.log("glyphicon star value: " + this.isFavorite);
-        this.isFavorite = !this.isFavorite;
+    post = {
+        title: "title",
+        isFavorite: true
     }
 
     onClick($event){
